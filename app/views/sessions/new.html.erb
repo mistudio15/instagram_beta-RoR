@@ -1,0 +1,30 @@
+<h3 class="alert alert-secondary"> <%= t('.login') %></h3>
+
+<%= form_with url: sessions_path do |form| %>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :email, t('.email') %>
+    </div>
+
+    <div class="col-10">
+      <%= form.email_field :email, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :password, t('.password') %>
+    </div>
+
+    <div class="col-10">
+      <%= form.password_field :password, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+<div class="actions">
+	<%= form.submit t('.login'), class: 'btn btn-primary' %>
+</div>
+<% end %>
+
+<div class='mt-3'> <%= t('.new_user_q') %> <%= link_to t('.sign_up_now'), signup_path, style: "text-decoration:none" %></div>

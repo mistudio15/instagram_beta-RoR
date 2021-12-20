@@ -1,0 +1,99 @@
+<h3 class="alert alert-secondary"><%= t '.title' %></h3>
+
+<%= form_with model: @user do |form| %>
+  <% if @user.errors.any? %>
+      <div class='alert alert-danger'>
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :email %>
+    </div>
+
+    <div class="col-10">
+      <%= form.email_field :email, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :name %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :surname %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_field :surname, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :username %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_field :username, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :password %>
+    </div>
+
+    <div class="col-10">
+      <%= form.password_field :password, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :password_confirmation %>
+    </div>
+
+    <div class="col-10">
+      <%= form.password_field :password_confirmation, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :description %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+    <%= form.label :avatar, t('users.form.update_avatar') %>
+    </div>
+
+    <div class="col-10">
+    <%= form.file_field :avatar, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= form.submit t('users.form.submit'), class: 'btn btn-primary mb-2' %>
+
+<% end %>
+
+<%#= link_to t('.back'), users_path, class: 'btn btn-secondary' %>

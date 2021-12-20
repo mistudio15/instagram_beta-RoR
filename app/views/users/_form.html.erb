@@ -1,0 +1,86 @@
+<%= form_with model: user do |form| %>
+  <% if user.errors.any? %>
+    <div class='alert alert-danger'>
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :email %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_field :email, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :name %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :surname %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_field :surname, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :username %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_field :username, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+      <%= form.label :description %>
+    </div>
+
+    <div class="col-10">
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <% if user.avatar.attached? %>
+      <div class="col-2">
+        <%= form.label :avatar, t('.current_avatar') %>
+      </div>
+      <div class="col-10">
+        <%= image_tag(user.avatar.variant(:gravity=>"Center", resize: "160x200^", crop: '160x200+0+0')) %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-2">
+    <%= form.label :avatar, t('.set_avatar') %>
+    </div>
+
+    <div class="col-10">
+    <%= form.file_field :avatar, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= form.submit t('.submit'), class: 'btn btn-primary mb-5' %>
+
+<% end %>

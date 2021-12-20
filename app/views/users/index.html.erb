@@ -1,0 +1,45 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<div class="container" style="width: 90%;">
+  <h5 class="text-center m-3"><%= t '.title' %></h5>
+  <hr>
+  <% @users.each do |user| %>
+    <div class="row justify-content-center my-3 p-2">
+      <div class="col-1">
+        <% if user.id == current_user.id %>    
+          <span class="badge bg-info"> <%= t '.you' %> </span>
+        <% end %>
+      </div>
+      <div class="col-3">
+
+      <% if user.avatar.attached? %>
+          <%= link_to(image_tag(user.avatar.variant(:gravity=>"North", resize: "100x100^", crop: '100x100+0+0'), class: "rounded-circle"), user) %>
+      <% end %>
+
+      </div>
+
+      <div class="col-3">
+        <div class="row align-items-end mb-2" style="height: 50%;">
+          <div class="col">
+            <strong> <%#= link_to user.username, user, class: "" %> </strong> 
+            <div class="">
+              <strong> <%= link_to user.username, user, class: "text-dark", style: "text-decoration:none" %> </strong> 
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-start mt-2" style="height: 50%;">
+          <div class="col">
+            <%= user.name %>
+          </div>
+       </div>
+      </div>
+    </div>
+      
+      <%#= link_to 'Show', user %>
+      <%#= link_to 'Edit', edit_user_path(user) %>
+      <%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%# if user.id == current_user.id %>
+  <% end %>
+</div>
+<br>

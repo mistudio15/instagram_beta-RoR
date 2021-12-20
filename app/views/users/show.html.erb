@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+
+<!-- <h3> Posts </h3> -->
+<div class="container" style="width: 95%;">
+
+  <div class="row mt-4 mx-2">
+    <div class="col-4">
+      <% if @user.avatar.attached? %>
+        <%= image_tag(@user.avatar.variant(:gravity=>"North", resize: "160x160^", crop: '160x160+0+0'),  class: "rounded-circle") %>
+      <% end %>
+    </div>
+    
+    <div class="col-5">
+      <div class="row">
+        <h3 style="padding:0;"> <%= @user.username %> </h3>
+      </div>
+
+      <div class="row mt-5">
+        <strong style="padding:0;"> <%= @user.name %> <%= @user.surname %> </strong>
+      </div>
+
+      <div class="row">
+        <% if @user.description && !@user.description.empty? %>
+          <% @user.description.split(/\r\n/).each do |elem| %>
+            <%= elem %> <br/>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% if @user.id == current_user.id %>
+      <div class="col-3" style="text-align: right">
+        <%= link_to t('.new_post'), new_user_post_path(@user), class: 'btn btn-primary btn-sm mb-1', style: "text-decoration:none" %> <br>
+        <%= link_to t('.edit'), edit_user_path(@user), class: 'btn btn-secondary btn-sm', style: "text-decoration:none" %>
+      </div>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <h5 class='mb-3'> <%= t('.posts') %> </h5> 
+  <% (@posts.count / 3.to_f).ceil.times do |i| %>
+    <div class="row mb-4">
+      <div class="col-4">
+      <% unless @posts[i * 3 + 0].nil? %>
+        <%= link_to(image_tag(@posts[i * 3 + 0].photo.variant(:gravity=>"North", resize: "210x210^", crop: '210x210+0+0')),                                                                    user_post_path(@user, @posts[i * 3 + 0])) %>
+      <% end %>
+      </div>
+      <div class="col-4">
+        <% unless @posts[i * 3 + 1].nil? %>
+          <%= link_to(image_tag(@posts[i * 3 + 1].photo.variant(:gravity=>"North", resize: "210x210^", crop: '210x210+0+0')),                                                                    user_post_path(@user, @posts[i * 3 + 1])) %>
+        <% end %>
+      </div>
+      <div class="col-4">
+        <% unless @posts[i * 3 + 2].nil? %>
+          <%= link_to(image_tag(@posts[i * 3 + 2].photo.variant(:gravity=>"North", resize: "210x210^", crop: '210x210+0+0')),                                                                    user_post_path(@user, @posts[i * 3 + 2])) %>
+        <% end %>
+      </div>
+    </div>
+    <%#= link_to 'Delete', user_post_path(@user, post), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>
+
+

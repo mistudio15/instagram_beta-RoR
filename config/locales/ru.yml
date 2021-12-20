@@ -1,0 +1,72 @@
+ru:
+  users:
+    form:
+      avatar: Обложка
+      current_avatar: Текущая обложка
+      set_avatar: Установить обложку
+      update_avatar: Обновить обложку
+      submit: Отправить
+    edit:
+      title: Редактирование пользователя
+      cansel: Отмена
+    index:
+      title: Пользователи
+      you: Вы
+    new:
+      title: Новый пользователь
+      back: Назад
+    show:
+      new_post: Новый пост
+      edit: Редактировать
+      posts: Посты
+    create:
+      success: Пользователь успешно создан
+    destroy:
+      success: Пользователь удален
+  sessions: 
+    new:    #email, pass ?
+      login: Вход
+      new_user_q: Новый пользователь?
+      sign_up_now: Зарегистрируйтесь сейчас!
+      email: Почта
+      password: Пароль
+    create:
+      success: Успешно
+      danger: Почта / пароль неверны
+  posts:
+    edit:
+      title: Редактирование поста
+      cansel: Отмена
+    new:
+      photo: Фото   
+    show:
+      delete: Удалить
+      edit: Редактировать
+      delete_post: Удалить пост
+      comment: Комментарий
+      add_comment: Добавить комментарий
+      back: Назад
+  layouts:
+    about: О нас
+    users: Пользователи
+    logout: Выход
+    login: Вход
+  pages:
+    about:
+      title: Добро пожаловать!
+  activerecord:
+    attributes:
+      user:
+        email: Почта
+        password: Пароль
+        password_confirmation: Подтвердите пароль
+        name: Имя
+        surname: Фамилия
+        username: Имя пользователя
+        description: Описание
+      post:
+        title: Заголовок
+        body: Текст
+      comment:
+        body: Текст
+        username: Имя пользователя

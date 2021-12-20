@@ -1,0 +1,100 @@
+<script>
+  const url = location.protocol + '//' + location.host + location.pathname + '/likes.json'
+  function send_query() {
+    console.log(url)
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+    xhr.onload = () => {
+      console.log(xhr.response)
+      show_result(JSON.parse(xhr.response))
+    }
+    xhr.send()
+  }
+
+  function show_result(data) {
+    const row = document.getElementById("likes")
+    col_button = row.children[0].children[0]
+    col_number = row.children[1].children[0]
+    if (data.color == 'black') {
+      col_button.className = "btn btn-secondary"
+      col_number.innerHTML = data.number
+    }    
+    else {
+      col_button.className = "btn btn-danger"
+      col_number.innerHTML = data.number  
+    }
+  }
+</script>
+
+<div class="row">
+  <div class="col">
+    <%= image_tag @post.photo.variant(:gravity=>"North", resize: "400x500^", crop: '400x500+0+0') %>
+  </div>
+
+  <div class="col">
+    <div style="height: 22em; overflow: auto;">
+      <div class="row mx-2">
+        <div style="padding:0;">
+            <strong style="padding:0;"> <%= @user.username %> </strong> <%= @post.title %> 
+        </div>
+      </div>
+
+      <div class="row mt-3 mx-2">
+        <%= @post.body %>
+        <% if @user.id == current_user.id %>
+        <div style='text-align: right;'>
+          <%= link_to t('.edit'), edit_user_post_path(@user, @post), style: 'text-decoration:none'%> |
+          <%= link_to t('.delete_post'), user_post_path(@user, @post), method: :delete, data: { confirm: 'Are you sure?' }, style: 'text-decoration:none'%>
+        </div>
+        <% end %>
+      </div>
+      <hr>
+
+
+
+      <% @comments.each do |comment| %>
+        <div class='row my-3 mx-2'>
+          <div style="padding:0;">
+            <strong style="padding:0;"> <%= comment.username %> </strong> <%= comment.body.to_s %>
+          </div>
+          <% if comment.username == current_user.username or current_user.username == @user.username%>
+            <%= link_to t('.delete'), user_post_comment_path(@user, @post, comment), method: :delete, data: { confirm: 'Are you sure?' }, style: 'text-align: right; text-decoration:none'%>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+
+
+    <div class="row" id='likes'>
+      <div class="col-2">
+        <% if @color == 'red' %>
+          <input type="button" name="commit" value="Likes" onclick="send_query()" class="btn btn-danger" />
+        <% else %>
+          <input type="button" name="commit" value="Likes" onclick="send_query()" class="btn btn-secondary" />
+        <% end %>
+      </div>
+      <div class="col-2 mx-3">
+        <div style="font-size: 1.4rem; margin-top: 1.4px;"> <%= @current_number %> </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row mt-3 align-items-end">
+      <%= form_with model: [@user, @post, @comment] do |form| %>
+
+        <div class="col mb-3">
+          <%= form.text_field :body, required: true, placeholder: t('.comment'), class: 'form-control' %>
+        </div>
+        <%= form.submit t('.add_comment'), class: 'btn btn-primary', id: 'input_comment' %>
+      </div>
+       <% end %>
+
+    </div>
+
+  </div>
+</div>
+
+<%= link_to t('.back'), user_path(@user), class: "btn btn-outline-secondary mt-3 " %>

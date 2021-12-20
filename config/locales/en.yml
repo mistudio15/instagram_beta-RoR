@@ -1,0 +1,76 @@
+en:
+  users:
+    form:
+      avatar: Avatar
+      current_avatar: Current Avatar
+      set_avatar: Set avatar
+      update_avatar: Update avatar
+      submit: Submit
+    edit:
+      title: Editing User
+      cansel: Cansel
+    index:
+      title: Users
+      you: you
+    new:
+      title: New User
+      back: Back
+    show:
+      new_post: New post
+      edit: Edit
+      posts: Posts
+    create:
+      success: User was successfully created
+    destroy:
+      success: User was successfully destroyed
+  sessions: 
+    new:    #email, pass ?
+      login: Log In
+      new_user_q: New user?
+      sign_up_now: Sign up now!
+      email: Email
+      password: Password
+    create:
+      success: Successfully
+      danger: Invalid email/password combination
+  posts:
+    edit:
+      title: Editing Post
+      cansel: Cansel
+    new:
+      photo: Photo    
+    show:
+      delete: Delete
+      edit: Edit
+      delete_post: Delete post
+      comment: Comment
+      add_comment: Add comment
+      back: Back
+
+  layouts:
+    about: About
+    users: Users
+    logout: Log Out
+    login: Log In
+  pages:
+    about:
+      title: You are welcome!
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+        name: Name
+        surname: Surname
+        username: Username
+        description: Description
+      post:
+        title: Title
+        body: Body
+      comment:
+        body: Body
+        username: Username
+
+        
+
