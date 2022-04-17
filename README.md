@@ -23,4 +23,4 @@ ImageMagic, позволяющая обрезать картинки под фо
 (“Center”, “North” и др.), перевод, в частности перевод атрибутов модели и «ленивый» перевод. 
 Работа выполнена успешно! Результаты тестирование корректны!
 
-[Отчет][https://drive.google.com/file/d/1AiOOvhzmnVb6KmV1e21i7TXc6ix22ZGI/view?usp=sharing]
+[Отчет](https://drive.google.com/file/d/1AiOOvhzmnVb6KmV1e21i7TXc6ix22ZGI/view?usp=sharing)
